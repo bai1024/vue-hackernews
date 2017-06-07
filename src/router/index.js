@@ -6,6 +6,7 @@ import Top from '@/components/top'
 import Show from '@/components/show'
 import Job from '@/components/job'
 import New from '@/components/new'
+// import Item from '@/components/item'
 
 Vue.use(Router)
 
@@ -16,12 +17,12 @@ export default new Router({
       component: Common,
       // name:'Common',
       children:[
-        // {
-        //   path: "",
-        //   redirect: "top",
-        // },
         {
-          path:'top',
+          path:'',
+          redirect:"item",
+        },
+        {
+          path:'top/',
           component:Top,
         },
         {

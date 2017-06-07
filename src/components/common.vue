@@ -20,24 +20,39 @@
 </script>
 
 <style lang="stylus">
-  header
-    background: #f60
-    nav
-      max-width: 800px
-      display: flex
-      align-items: center
-      margin: auto
-      color: white
-      padding: 20px 0
-      > a
-        text-decoration: none
-        margin-right: 30px
-        font-weight: 500
+  .container
+    display: flex
+    flex-direction: column
+    height: 100vh 
+    header
+      background: #f60
+      nav
+        max-width: 800px
+        display: flex
+        align-items: center
+        margin: auto
         color: white
-    img
-      width: 24px
-      margin-right: 30px
-    /
-    p
-      margin-left: auto
+        padding: 20px 0
+        > a
+          text-decoration: none
+          margin-right: 30px
+          font-weight: 500
+          color: white
+      img
+        width: 24px
+        margin-right: 30px
+      /
+      p
+        margin-left: auto
+    .main
+      flex: 1
+      overflow: auto
+      padding: 20px 0
+      .main-container
+        max-width: 800px
+        margin: auto
+        background: white
+        border-radius: 5px
+        > ul
+          padding: 0
 </style>
