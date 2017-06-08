@@ -1,5 +1,6 @@
 <template lang="pug">
   .container
+    <vue-progress-bar></vue-progress-bar>
     header
       nav
         img(src='../assets/logo.png')
@@ -12,7 +13,9 @@
     .page-nav hahah
     .main
       .main-container
-        router-view 
+        <transition name='fade'>
+          router-view
+        </transition>   
 </template>
 
 <script>
@@ -20,6 +23,13 @@
 </script>
 
 <style lang="stylus">
+  .fade-enter-active
+    transition: opacity 2s
+  .fade-leave-active 
+    transition: opacity .5s
+  .fade-enter, .fade-leave-active 
+    opacity: 0
+    
   .container
     display: flex
     flex-direction: column
@@ -38,10 +48,12 @@
           margin-right: 30px
           font-weight: 500
           color: white
+        .router-link-active {
+          font-weight: 700
+        }
       img
         width: 24px
         margin-right: 30px
-      /
       p
         margin-left: auto
     .main
@@ -55,4 +67,5 @@
         border-radius: 5px
         > ul
           padding: 0
+  
 </style>

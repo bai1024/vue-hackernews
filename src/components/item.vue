@@ -1,7 +1,6 @@
 <template lang="pug">
   li.news-item
-    div(v-if='!id')
-      p loading
+    div(v-if='!d')
     template(v-else)
       span.score {{ d.score }}
       p.title
@@ -69,6 +68,7 @@
       left: 0
       margin-top: -10px
       width: 80px
+      font-weight: 700
     p
       text-align: left
       > a
