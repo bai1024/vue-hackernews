@@ -1,54 +1,34 @@
 <template lang="pug">
   li.news-item
-    div(v-if='!d')
+    div(v-if='!item')
     template(v-else)
-      span.score {{ d.score }}
+      span.score {{ item.score }}
       p.title
-        template(v-if='d.url') 
-          a(:href='d.url') {{ d.title }}
-          span {{ d.url | getDomain}}
+        template(v-if='item.url') 
+          a(:href='item.url') {{ item.title }}
+          span {{ item.url | getDomain}}
         template(v-else)
-          a(:href='"/item/" + d.by') {{ d.title }}
+          a(:href='"/item/" + item.by') {{ item.title }}
       .meta 
         span.by 
           | by
-          a(:href='"/user/"+ d.by') {{ d.by }}
-        span.time {{ d.time }}
-        template(v-if='d.descendants')
+          a(:href='"/user/"+ item.by') {{ item.by }}
+        span.time {{ item.time }}
+        template(v-if='item.descendants')
           span.comments 
             | | 
-            a(:href='"/user/"+ d.by') {{ d.descendants }} comments
+            a(:href='"/user/"+ item.by') {{ item.descendants }} comments
 </template>
 
 <script>
   import axios from 'axios'
-  // import timeago from 'timeago.js'
 
   export default {
     name: 'item',
     props: {
-      id: {
-        type: Number,
+      item: {
+        type: Object,
         required:true
-      }
-    },
-    data () {
-      return { 
-        d: null
-      };
-    },
-    created() {
-       axios.get(`https://hacker-news.firebaseio.com/v0/item/${this.id}.json`)
-      .then(res => {
-        this.d = res.data
-      })
-    },
-    filters:{
-      getDomain(url){
-        return '('+ url.match(/https?:\/\/(.+?)\//)[1] + ')'
-      },
-      timeAgo(ts) {
-        return timeago().format(ts * 1000)
       }
     }
   };

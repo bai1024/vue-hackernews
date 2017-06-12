@@ -19,26 +19,26 @@ export default new Router({
       children:[
         {
           path:'',
-          redirect:"item",
+          redirect:"top",
         },
         {
-          path:'top/',
+          path:'top/:page?',
           component:Top,
         },
         {
-          path:'new',
+          path:'new/:page?',
           component:New
         },
         {
-          path:'show',
+          path:'show/:page?',
           component:Show
         },
         {
-          path:'ask',
+          path:'ask/:page?',
           component:Ask
         },
         {
-          path:'job',
+          path:'job/:page?',
           component:Job
         },
       ]

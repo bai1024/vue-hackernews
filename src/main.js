@@ -4,6 +4,7 @@ import Vue from 'vue'
 import VueProgressBar from 'vue-progressbar'
 import App from './App'
 import router from './router'
+import './global'
 // import  axios from 'axios'
 const options = {
   color: 'rgb(255, 202, 43)',
