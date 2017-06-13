@@ -1,12 +1,14 @@
 <template lang='pug'>
   .page-nav
     span.page-nav__btn(
-      
+      :class='{"page-nav__btn--disabled": prevDisabled}'
+      @click='onPrev'
     )
      < prev
-    span 1/2
+    span.page-nav__num {{ currentPage }} / {{ totalPage }}
     span.page-nav__btn(
-    
+      :class='{"page-nav__btn--disabled": nextDisabled}'
+      @click='onNext'
     ) more >
 </template>
 
@@ -14,11 +16,36 @@
 export default {
 
   name: 'page-nav',
-
+  props:{
+    onPrev:{
+      type: Function,
+      required: true
+    },
+    onNext:{
+      type: Function,
+      required: true
+    },
+    currentPage: {
+      type: Number,
+      required: true
+    },
+    totalPage:{
+      type: Number,
+      required: true
+    }
+  },
   data () {
     return {
 
     };
+  },
+  computed: {
+    prevDisabled() {
+      return this.currentPage === 1
+    },
+    nextDisabled() {
+      return this.currentPage === this.totalPage
+    },
   }
 };
 </script>
@@ -37,6 +64,6 @@ export default {
   .page-nav__btn--disabled
     color: #ccc
     cursor: not-allowed
-  .page-nav__current
+  .page-nav__num
     margin: 10px
 </style>

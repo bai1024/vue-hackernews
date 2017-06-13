@@ -1,16 +1,20 @@
 <template lang='pug'>
   .items
-    page-nav(
-     
-    )
-    <transition name='fade'>
-      ul.news-list
-        item-list(
-          v-for="item in items",
-          :key="item.id",
-          :item="item",
-        )
-    </transition>
+    template(v-if='data')
+      page-nav(
+        :totalPage='totalPage'
+        :onPrev='onPrev'
+        :onNext='onNext'
+        :currentPage='page'
+      )
+      <transition name='fade'>
+        ul.news-list
+          item-list(
+            v-for="item in items",
+            :key="item.id",
+            :item="item",
+          )
+      </transition>
 </template> 
 
 <script>
@@ -70,6 +74,10 @@
       }
     },
     watch:{
+      "$route": function() {
+        this.page = Number(this.$route.params.page) || 1
+        this.items = null
+      },
       page:function(){
         this.fetchAllItem()
       }
@@ -80,7 +88,7 @@
 
 <style lang='stylus'>
   .fade-enter-active
-    transition: opacity 10s
+    transition: opacity 2s
   .fade-leave-active 
     transition: opacity .5s
   .fade-enter, .fade-leave-active 
