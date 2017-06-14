@@ -12,12 +12,14 @@
       .meta 
         span.by 
           | by
-          a(:href='"/user/"+ item.by') {{ item.by }}
-        span.time {{ item.time }}
+          router-link(:to='"/user/"+ item.by') {{ item.by }}
+        span.time {{ item.time | timeAgo}}
         template(v-if='item.descendants')
           span.comments 
             | | 
-            a(:href='"/user/"+ item.by') {{ item.descendants }} comments
+            router-link(
+            :to='"/item/" + item.id' 
+            ) {{ item.descendants }} comments
 </template>
 
 <script>
@@ -35,7 +37,7 @@
 </script>
 
 <style lang="stylus">
-  li
+  .news-item
     list-style: none
     padding: 20px 30px 20px 80px;
     border-bottom: 1px solid #eee;

@@ -6,7 +6,8 @@ import Top from '@/components/top'
 import Show from '@/components/show'
 import Job from '@/components/job'
 import New from '@/components/new'
-// import Item from '@/components/item'
+import Item from '@/components/item'
+import User from '@/components/user'
 
 Vue.use(Router)
 
@@ -41,6 +42,14 @@ export default new Router({
           path:'job/:page?',
           component:Job
         },
+        {
+          path:'item/:id',
+          component:Item
+        },
+        {
+          path:'user/:user',
+          component:User
+        }
       ]
     }
   ]
