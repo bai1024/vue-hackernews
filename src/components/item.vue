@@ -69,7 +69,6 @@ export default {
     axios.get(`https://hacker-news.firebaseio.com/v0/item/${itemId}.json`)
       .then(res => {
         this.item = res.data
-        console.log(this.item)
         this.fetchComments()
       })
   },
