@@ -14,8 +14,8 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
-      component: Common,
+      path:'/',
+      component:Common,
       // name:'Common',
       children:[
         {

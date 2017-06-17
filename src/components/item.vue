@@ -19,7 +19,7 @@
           :item="comment"
           :key="comment.id",
         )
-      //- _animation-loading(v-else)
+      loading(v-else)
 </template>
 
 <script>
@@ -57,9 +57,6 @@ export default {
         })))
       }
       f(this.item.kids).then(d => {
-        console.log(this.item.kids)
-        console.log(this.item.kids)
-        console.log(d)
         this.comments = d
       })
     },
@@ -116,11 +113,14 @@ export default {
     text-decoration: underline
     color: #828282
 .item__comments
+  position: relative
   background-color: white
   box-shadow: 0 1px 2px rgba(0,0,0,.1)
   padding: 0 20px
-  > ._animation-loading
-    padding: 50px 0
+  > .loader
+    position: absolute
+    top: 10px
+    left: 190px
 .item__comments__header
   padding: 15px 0
   color: #34495e
