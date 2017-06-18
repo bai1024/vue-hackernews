@@ -57,7 +57,7 @@ export default {
         })))
       }
       f(this.item.kids).then(d => {
-        // this.comments = d
+        this.comments = d
       })
     },
     fetchComment(id) {
@@ -120,10 +120,6 @@ export default {
     position: absolute
     top: 10px
     left: 190px
-    border: 5px solid #f3f3f3
-    border-top: 5px solid #f60
-    width: 20px
-    height: 20px
 .item__comments__header
   padding: 15px 0
   color: #34495e

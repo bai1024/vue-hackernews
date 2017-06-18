@@ -1,5 +1,6 @@
 <template lang='pug'>
   .items
+    <vue-progress-bar></vue-progress-bar>
     template(v-if='data')
       page-nav(
         :totalPage='totalPage'
@@ -21,7 +22,6 @@
   import axios from 'axios'
   import ItemList from '@/components/item-list'
   import pageNav from '@/components/page-nav'
-  import VueProgressBar from 'vue-progressbar'
 
   export default {
     name: '',
@@ -59,11 +59,12 @@
         var url = 'https://hacker-news.firebaseio.com/v0/item/'
         var start = (this.page - 1) * 20
         var ids = this.data.slice(start,start + 20)
+        this.$Progress.start()
         Promise.all(ids.map(id => {
           return axios.get(url + id + '.json')
         })).then(d => {
-          this.$Progress.finish()
           this.items = d.map(res => res.data)
+          this.$Progress.finish()
         })
       },
       onPrev() {
@@ -93,6 +94,12 @@
     transition: opacity .5s
   .fade-enter, .fade-leave-active 
     opacity: 0
+    
+  #nprogress
+    .bar
+      background: rgb(255, 202, 43) !important
+      height: 4px
+
     
   .page-nav
     background: white
