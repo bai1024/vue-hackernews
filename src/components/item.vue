@@ -3,7 +3,7 @@
   template(v-if="item")
     .item__header
         .item__header__title
-          a(:href="item.url", target="_blank") {{ item.title }}
+          a(:href="item.url",target="_blank") {{ item.title }}
           span {{ item.url | getDomain }}
         .item__header__meta
           span {{ item.score }} points

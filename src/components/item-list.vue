@@ -5,7 +5,7 @@
       span.score {{ item.score }}
       p.title
         template(v-if='item.url') 
-          a(:href='item.url') {{ item.title }}
+          a(:href='item.url',target="_blank") {{ item.title }}
           span {{ item.url | getDomain}}
         template(v-else)
           a(:href='"/item/" + item.by') {{ item.title }}

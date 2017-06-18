@@ -103,10 +103,15 @@
     
   .page-nav
     background: white
+    width: 100%
+    position: fixed
+    top: 90px
+    z-index: 100
+    box-shadow: 0 1px 2px rgba(0,0,0,.1)
   .news-list
     max-width: 800px
     margin: auto
-    margin-top: 20px
+    margin-top: 60px
     background: white
     padding: 0
     border-radius: 5px

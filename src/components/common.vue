@@ -8,7 +8,7 @@
         router-link(to='/show') Show
         router-link(to='/ask') Ask
         router-link(to='/job') Jobs
-        p hhahah
+        p Bulid by BY
     .main
       router-view  
 </template>
