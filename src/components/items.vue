@@ -94,13 +94,6 @@
     transition: opacity .5s
   .fade-enter, .fade-leave-active 
     opacity: 0
-    
-  #nprogress
-    .bar
-      background: rgb(255, 202, 43) !important
-      height: 4px
-
-    
   .page-nav
     background: white
     width: 100%
@@ -110,8 +103,7 @@
     box-shadow: 0 1px 2px rgba(0,0,0,.1)
   .news-list
     max-width: 800px
-    margin: auto
-    margin-top: 60px
+    margin: 60px auto 50px 
     background: white
     padding: 0
     border-radius: 5px

@@ -53,6 +53,7 @@
       font-weight: 700
     p
       text-align: left
+      margin: 0  
       > a
         color: #34495e 
         text-decoration: none

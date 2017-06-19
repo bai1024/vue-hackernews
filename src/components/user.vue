@@ -57,12 +57,12 @@ export default {
       padding: 0
       list-style: none
       text-align: left
-      font-size: 0.9em;
+      font-size: 1em;
     .about
       margin: 1em 0;
     .links
       text-align: left
       a
-        font-size: 0.8em
+        font-size: 1em
         color: #34495e   
 </style>
