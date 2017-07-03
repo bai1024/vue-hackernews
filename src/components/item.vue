@@ -5,7 +5,6 @@
         .item__header__title
           a(:href="item.url",target="_blank") {{ item.title }}
           span {{ item.url | getDomain }}
-          span {{ item.id }}
         .item__header__meta
           span {{ item.score }} points
           span | by
@@ -64,7 +63,6 @@ export default {
       }
 
       f(this.item.kids).then(d => {
-        console.log(JSON.parse(JSON.stringify(d)))
         this.comments = d
       })
     },
