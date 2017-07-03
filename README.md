@@ -1,22 +1,9 @@
-### Vue Hackernews
-仿写[Vue Hackernews](https://vue-hn.now.sh/top)
+# Vue Hackernews
+使用Vue和Unsplash API构建的Hacker News,[Online Demo](http://ww1.sinaimg.cn/large/9bd18299gy1fh6q3jluudj20t10hhjtg)
 
-### 安装`vue-cli`
+## Setup
 ```bash
-$ npm install vue-cli
-$ vue init <template-name> <projuct-name>
-e.g:
-$ vue init webpack hackernews
+$ git clone https://github.com/dingdingbai/vue-hackernews.git
+$ npm install
+$ npm run dev #open localhost:8080
 ```
-
-### 配置Pug和stylus
-```bash
-# 安装pug依赖，然后template的lang属性改为pug即可
-$ npm install --save-dev pug
-# 安装stylus以及stylus-loader，然后style的lang属性改为stylus即可
-$ npm install --saved-dev stylus stylus-loader
-```
-
-### 工具
-- [timeAgo](https://github.com/hustcc/timeago.js)
-- [vue-progressbar](https://github.com/hilongjw/vue-progressbar)

@@ -17,7 +17,7 @@
       template(v-if="comments")
         comment(
           v-for="comment in comments"
-          v-of="!comment.deleted"
+          v-if="!comment.deleted"
           :item="comment"
           :key="comment.id"
         )
@@ -62,8 +62,9 @@ export default {
         })
         return Promise.all(comments)
       }
-      
+
       f(this.item.kids).then(d => {
+        console.log(JSON.parse(JSON.stringify(d)))
         this.comments = d
       })
     },
