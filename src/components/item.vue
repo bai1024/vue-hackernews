@@ -5,6 +5,7 @@
         .item__header__title
           a(:href="item.url",target="_blank") {{ item.title }}
           span {{ item.url | getDomain }}
+          span {{ item.id }}
         .item__header__meta
           span {{ item.score }} points
           span | by
@@ -15,9 +16,10 @@
         | {{ item.descendants }} comments
       template(v-if="comments")
         comment(
-          v-for="comment in comments",
+          v-for="comment in comments"
+          v-of="!comment.deleted"
           :item="comment"
-          :key="comment.id",
+          :key="comment.id"
         )
       loading(v-else)
 </template>
@@ -39,23 +41,28 @@ export default {
         this.comments = []
         return
       }
-      var f = ids => {
-        var result = {}
-        return Promise.all(ids.map(id => this.fetchComment(id).then(res => {
+      const f = ids => {
+        let comments = ids.map(id => {
+          let result = {}
+          return this.fetchComment(id).then(res => {
             result.by = res.data.by
             result.time = res.data.time
             result.text = res.data.text
             result.id = res.data.id
-          if(res.data.kids == null) {
-            return Promise.resolve([])
-          } else {
-            return f(res.data.kids)
-          }
-        }).then(children => {
-          result.children = children
-          return Promise.resolve(result)
-        })))
+            result.deleted = res.data.deleted || false
+            if(res.data.kids == null) {
+              return Promise.resolve([])
+            } else {
+              return f(res.data.kids)
+            }
+          }).then(children => {
+            result.children = children
+            return Promise.resolve(result)
+          })
+        })
+        return Promise.all(comments)
       }
+      
       f(this.item.kids).then(d => {
         this.comments = d
       })
